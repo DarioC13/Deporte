@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="879b07d7-8358-4f40-b43d-ec77d96515cc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#7CFC00">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#DFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="6cee4819-708d-4c35-9609-a227ccbffba4"/>
+	<parameter name="sentencia" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\walter\\Desktop\\DVSYSTEM\\PROYECTO DEPORTES SISTEMA\\ProyectoDeporteSistema\\src\\java\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT
+     encuentros.`id_encuentros` AS encuentros_id_encuentros,
+     encuentros.`id_equipo_a` AS encuentros_id_equipo_a,
+     encuentros.`id_equipo_b` AS encuentros_id_equipo_b,
+     encuentros.`id_esenario` AS encuentros_id_esenario,
+     encuentros.`fecha_encuentro` AS encuentros_fecha_encuentro,
+     encuentros.`hora` AS encuentros_hora,
+     encuentros.`asignar_campeonato_categoria` AS encuentros_asignar_campeonato_categoria,
+     marcador_equipo.`id_marcador_equipo` AS marcador_equipo_id_marcador_equipo,
+     marcador_equipo.`id_encuentro` AS marcador_equipo_id_encuentro,
+     marcador_equipo.`id_equipo` AS marcador_equipo_id_equipo,
+     marcador_equipo.`id_estado_encuentro` AS marcador_equipo_id_estado_encuentro,
+     marcador_equipo.`num_gol_favor` AS marcador_equipo_num_gol_favor,
+     marcador_equipo.`num_gol_contra` AS marcador_equipo_num_gol_contra,
+     marcador_equipo.`diferencia_goles` AS marcador_equipo_diferencia_goles,
+     marcador_equipo.`informe_encuentro_equipo` AS marcador_equipo_informe_encuentro_equipo,
+     categoria.`id_categoria` AS categoria_id_categoria,
+     categoria.`categoria` AS categoria_categoria,
+     asginar_campeonato_categoria.`idasginar_campeonato_categoria` AS asginar_campeonato_categoria_idasginar_campeonato_categoria,
+     asginar_campeonato_categoria.`id_campeonato` AS asginar_campeonato_categoria_id_campeonato,
+     asginar_campeonato_categoria.`id_categoria` AS asginar_campeonato_categoria_id_categoria,
+     asginar_campeonato_categoria.`id_equipo` AS asginar_campeonato_categoria_id_equipo,
+     asginar_campeonato_categoria.`observacion` AS asginar_campeonato_categoria_observacion,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono,
+     equipob.`id_equipo` AS equipo_id_equipo_b,
+     equipob.`nom_equipo` AS equipo_nom_equipo_b,
+     equipob.`fecha_inscripcion` AS equipo_fecha_inscripcion_b,
+     equipob.`logo` AS equipo_logo_b,
+     equipob.`direccion` AS equipo_direccion_b,
+     equipob.`email` AS equipo_email_b,
+     equipob.`telefono` AS equipo_telefono_b,
+     campeonato.`id_campeonato` AS campeonato_id_campeonato,
+     campeonato.`campeonato` AS campeonato_campeonato,
+     campeonato.`fecha_de_inicio` AS campeonato_fecha_de_inicio,
+     campeonato.`fecha_fin` AS campeonato_fecha_fin
+FROM
+     `encuentros` encuentros INNER JOIN `marcador_equipo` marcador_equipo ON encuentros.`id_encuentros` = marcador_equipo.`id_encuentro`
+     INNER JOIN `asginar_campeonato_categoria` asginar_campeonato_categoria ON encuentros.`asignar_campeonato_categoria` = asginar_campeonato_categoria.`idasginar_campeonato_categoria`
+     INNER JOIN `equipo` equipo ON encuentros.`id_equipo_a` = equipo.`id_equipo`
+     INNER JOIN `equipo` equipob ON encuentros.`id_equipo_b` = equipob.`id_equipo`
+     INNER JOIN `categoria` categoria ON asginar_campeonato_categoria.`id_categoria` = categoria.`id_categoria`
+     INNER JOIN `campeonato` campeonato ON asginar_campeonato_categoria.`id_campeonato` = campeonato.`id_campeonato`
+WHERE
+     encuentros.`id_encuentros` = $P{sentencia}]]>
+	</queryString>
+	<field name="encuentros_id_encuentros" class="java.lang.Integer"/>
+	<field name="encuentros_id_equipo_a" class="java.lang.Integer"/>
+	<field name="encuentros_id_equipo_b" class="java.lang.Integer"/>
+	<field name="encuentros_id_esenario" class="java.lang.Integer"/>
+	<field name="encuentros_fecha_encuentro" class="java.sql.Date"/>
+	<field name="encuentros_hora" class="java.lang.String"/>
+	<field name="encuentros_asignar_campeonato_categoria" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_marcador_equipo" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_encuentro" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_estado_encuentro" class="java.lang.Integer"/>
+	<field name="marcador_equipo_num_gol_favor" class="java.lang.Integer"/>
+	<field name="marcador_equipo_num_gol_contra" class="java.lang.Integer"/>
+	<field name="marcador_equipo_diferencia_goles" class="java.lang.Integer"/>
+	<field name="marcador_equipo_informe_encuentro_equipo" class="java.lang.String"/>
+	<field name="categoria_id_categoria" class="java.lang.Integer"/>
+	<field name="categoria_categoria" class="java.lang.String"/>
+	<field name="asginar_campeonato_categoria_idasginar_campeonato_categoria" class="java.lang.Integer"/>
+	<field name="asginar_campeonato_categoria_id_campeonato" class="java.lang.Integer"/>
+	<field name="asginar_campeonato_categoria_id_categoria" class="java.lang.Integer"/>
+	<field name="asginar_campeonato_categoria_id_equipo" class="java.lang.Integer"/>
+	<field name="asginar_campeonato_categoria_observacion" class="java.lang.String"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<field name="equipo_id_equipo_b" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo_b" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion_b" class="java.sql.Date"/>
+	<field name="equipo_logo_b" class="java.lang.String"/>
+	<field name="equipo_direccion_b" class="java.lang.String"/>
+	<field name="equipo_email_b" class="java.lang.String"/>
+	<field name="equipo_telefono_b" class="java.lang.String"/>
+	<field name="campeonato_id_campeonato" class="java.lang.Integer"/>
+	<field name="campeonato_campeonato" class="java.lang.String"/>
+	<field name="campeonato_fecha_de_inicio" class="java.sql.Date"/>
+	<field name="campeonato_fecha_fin" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<line>
+				<reportElement x="388" y="72" width="167" height="1" uuid="cd021841-6e13-4c29-9fa8-01cdb7d64f5d"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" uuid="af4808b8-2faf-4dd4-bb61-c1e0de4c83b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Impact" size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ENCUENTROS JUGADOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="457" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="0" width="109" height="36" uuid="44355534-e9fe-495a-b4de-fe4a4241397e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMPEONATO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="39" width="47" height="20" uuid="05eeaa71-2aa8-4366-b02a-347e651e8802"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="63" width="47" height="20" uuid="daf868b7-e78e-4819-9f79-c5a48d2efbac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="39" width="79" height="20" uuid="9eba7a39-18cc-4df0-be6c-fc47ea351759"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Encuentro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="63" width="79" height="20" uuid="b808faf8-7119-4723-b674-ea70097578ad"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="63" width="100" height="20" uuid="1f2b3cc8-047a-45ab-b69d-eea5c5bea72f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{encuentros_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="39" width="99" height="20" uuid="4de140a0-0bd3-426b-8e2e-276b571f3829"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{encuentros_fecha_encuentro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="63" width="100" height="20" uuid="2ba77113-c2bb-4d94-8df5-8a8c0cddcaa5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{categoria_categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="39" width="73" height="20" uuid="3a64ab08-1fb2-493e-a3b1-9b359ded64ec"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{equipo_nom_equipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="312" y="39" width="21" height="20" uuid="254efe1a-076f-4086-9525-b7a07f6d38c2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[VS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="339" y="39" width="100" height="20" uuid="f739950f-31bd-464c-967a-fecfa91af71e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{equipo_nom_equipo_b}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="0" width="157" height="36" uuid="bd3ac54c-91f7-41c3-a12e-f38ec240c367"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{campeonato_campeonato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="88" width="128" height="20" uuid="42603cd2-205d-477b-afdb-e856ca9cb04b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marcador Final:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="140" y="83" width="413" height="25" uuid="620364fb-0cb1-4686-9d59-363d641d0dc7"/>
+				<subreportParameter name="sentencia">
+					<subreportParameterExpression><![CDATA[$P{sentencia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "comision_de_disiplina_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="143" width="555" height="203" uuid="96010db8-75d7-4c3d-855c-b7c868e685d6"/>
+				<subreportParameter name="sentencia">
+					<subreportParameterExpression><![CDATA[$P{sentencia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "comision_de_disiplina_subreport2-1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="357" width="555" height="100" uuid="3dff077c-13ba-4ba1-86cd-70a07af9a727"/>
+				<subreportParameter name="sentencia">
+					<subreportParameterExpression><![CDATA[$P{sentencia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "comision_de_disiplina_subreport2-3.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="109" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="85" width="555" height="15" uuid="865d800b-629c-4ac1-a192-3962efeff66a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Telefono: (593) 072770146 - www.limonindanza.gob.ec]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="555" height="15" uuid="942d925e-8ee6-437d-8c0b-dc9a61823308"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Direccion: 10 de Agosto y AV. el Ejercito - RUC: 1460000450001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="31" width="197" height="20" uuid="30fdbddd-a0fc-4f5d-9142-e6283abcc347"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[VOCAL DE DISCIPLINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="11" width="197" height="20" uuid="a8bcf15b-c2f4-4641-bf7d-44e089760ea8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift"/>
+				</textElement>
+				<text><![CDATA[Manuel Chillogallo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="31" width="197" height="20" uuid="ad914a09-9c66-497b-840c-9cb8a4008be7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[SUB COORDINADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="11" width="197" height="20" uuid="d03c159e-92d8-432b-bbfd-98eaad1132d7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift"/>
+				</textElement>
+				<text><![CDATA[Kevin Bustamante]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="10" width="193" height="1" uuid="7057d560-a362-4679-9cf8-066d64e84da1"/>
+			</line>
+			<line>
+				<reportElement x="360" y="10" width="193" height="1" uuid="bd015594-7d19-428d-8a42-3d9e8740ad99"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

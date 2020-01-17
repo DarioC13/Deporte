@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ControlSancionesEditDlg" widgetVar="ControlSancionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditControlSancionesTitle}">
+            <h:form id="ControlSancionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controlSancionesController.selected != null}">
+                       
+                        <p:outputLabel value="#{idioma.EditControlSancionesLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{controlSancionesController.selected.observaciones}" title="#{idioma.EditControlSancionesTitle_observaciones}" />
+                        <p:outputLabel value="#{idioma.EditControlSancionesLabel_idEncuentro}" for="idEncuentro" />
+                        <p:selectOneMenu id="idEncuentro" value="#{controlSancionesController.selected.idEncuentro}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{encuentrosController.itemsAvailableSelectOne}"
+                                           var="idEncuentroItem"
+                                           itemValue="#{idEncuentroItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditControlSancionesLabel_idControlPago}" for="idControlPago" />
+                        <p:selectOneMenu id="idControlPago" value="#{controlSancionesController.selected.idControlPago}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{controlDePagoController.itemsAvailableSelectOne}"
+                                           var="idControlPagoItem"
+                                           itemValue="#{idControlPagoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditControlSancionesLabel_idPersona}" for="idPersona" />
+                        <p:selectOneMenu id="idPersona" value="#{controlSancionesController.selected.idPersona}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idPersonaItem"
+                                           itemValue="#{idPersonaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditControlSancionesLabel_idSancion}" for="idSancion" />
+                        <p:selectOneMenu id="idSancion" value="#{controlSancionesController.selected.idSancion}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{sancionController.itemsAvailableSelectOne}"
+                                           var="idSancionItem"
+                                           itemValue="#{idSancionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{controlSancionesController.update}" value="#{idioma.Save}" update="display,:ControlSancionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ControlSancionesEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="ControlSancionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

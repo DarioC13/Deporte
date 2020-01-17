@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcadorJugadorEditDlg" widgetVar="MarcadorJugadorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditMarcadorJugadorTitle}">
+            <h:form id="MarcadorJugadorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcadorJugadorController.selected != null}">
+                       
+                        <p:outputLabel value="#{idioma.EditMarcadorJugadorLabel_gol}" for="gol" />
+                        <p:inputText id="gol" value="#{marcadorJugadorController.selected.gol}" title="#{idioma.EditMarcadorJugadorTitle_gol}" />
+                        <p:outputLabel value="#{idioma.EditMarcadorJugadorLabel_informeJugador}" for="informeJugador" />
+                        <p:inputText id="informeJugador" value="#{marcadorJugadorController.selected.informeJugador}" title="#{idioma.EditMarcadorJugadorTitle_informeJugador}" />
+                        <p:outputLabel value="#{idioma.EditMarcadorJugadorLabel_idEncuentros}" for="idEncuentros" />
+                        <p:selectOneMenu id="idEncuentros" value="#{marcadorJugadorController.selected.idEncuentros}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{encuentrosController.itemsAvailableSelectOne}"
+                                           var="idEncuentrosItem"
+                                           itemValue="#{idEncuentrosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditMarcadorJugadorLabel_idPersona}" for="idPersona" />
+                        <p:selectOneMenu id="idPersona" value="#{marcadorJugadorController.selected.idPersona}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idPersonaItem"
+                                           itemValue="#{idPersonaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditMarcadorJugadorLabel_idSanciones}" for="idSanciones" />
+                        <p:selectOneMenu id="idSanciones" value="#{marcadorJugadorController.selected.idSanciones}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{sancionController.itemsAvailableSelectOne}"
+                                           var="idSancionesItem"
+                                           itemValue="#{idSancionesItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{marcadorJugadorController.update}" value="#{idioma.Save}" update="display,:MarcadorJugadorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MarcadorJugadorEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="MarcadorJugadorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoEncuentroCreateDlg" widgetVar="EstadoEncuentroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreateEstadoEncuentroTitle}">
+            <h:form id="EstadoEncuentroCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoEncuentroController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.CreateEstadoEncuentroLabel_estadoEncuentro}" for="estadoEncuentro" />
+                        <p:inputText id="estadoEncuentro" value="#{estadoEncuentroController.selected.estadoEncuentro}" title="#{idioma.CreateEstadoEncuentroTitle_estadoEncuentro}" />
+                        <p:outputLabel value="#{idioma.CreateEstadoEncuentroLabel_puntos}" for="puntos" />
+                        <p:inputText id="puntos" value="#{estadoEncuentroController.selected.puntos}" title="#{idioma.CreateEstadoEncuentroTitle_puntos}" />
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check" actionListener="#{estadoEncuentroController.create}" value="#{idioma.Save}" update="display,:EstadoEncuentroListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoEncuentroCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="EstadoEncuentroCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

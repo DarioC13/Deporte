@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>GAD MUNICIPAL DE LIMON| INGRESO</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+                <link rel="icon"   href="resources/images/icono.ico" type="image/png"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link href="resources/css/estilos_login.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form class="login-form">
+            <p:growl id="growl" sticky="true"  autoUpdate="true" showDetail="true"/>
+            <h1>Iniciar Sesión</h1>
+            <div class="txtb">
+                <p:outputLabel value="Usuario" style="  text-decoration: none; font-family: 'open sans black'; font-size: 15px"/>
+                <p:inputText class="user" id="Usuario" value="#{accesoSistema.selected.usuario}" required="true" />               
+
+            </div>
+            <div class="txtb">
+                <p:outputLabel value="Contraseña" style="  text-decoration: none; font-family: 'open sans black'; font-size: 15px"/>
+                <h:inputSecret id="Contraseña" value="#{accesoSistema.selected.password}" required="true"></h:inputSecret>
+
+            </div>
+            <h:commandButton class="logbtn"  value="Ingresar" actionListener="#{accesoSistema.doLogin}">
+            </h:commandButton>
+            <div class="bottom-texto">
+                 <a href="index.xhtml">Regresar</a><br/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

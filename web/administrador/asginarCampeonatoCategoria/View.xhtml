@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsginarCampeonatoCategoriaViewDlg" widgetVar="AsginarCampeonatoCategoriaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewAsginarCampeonatoCategoriaTitle}">
+            <h:form id="AsginarCampeonatoCategoriaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asginarCampeonatoCategoriaController.selected != null}">
+
+                        <h:outputText value="#{idioma.ViewAsginarCampeonatoCategoriaLabel_observacion}"/>
+                        <h:outputText value="#{asginarCampeonatoCategoriaController.selected.observacion}" title="#{idioma.ViewAsginarCampeonatoCategoriaTitle_observacion}"/>
+                        <h:outputText value="#{idioma.ViewAsginarCampeonatoCategoriaLabel_idCampeonato}"/>
+                        <h:outputText value="#{asginarCampeonatoCategoriaController.selected.idCampeonato.campeonato}" title="#{idioma.ViewAsginarCampeonatoCategoriaTitle_idCampeonato}"/>
+                        <h:outputText value="#{idioma.ViewAsginarCampeonatoCategoriaLabel_idCategoria}"/>
+                        <h:outputText value="#{asginarCampeonatoCategoriaController.selected.idCategoria.categoria}" title="#{idioma.ViewAsginarCampeonatoCategoriaTitle_idCategoria}"/>
+                        <h:outputText value="#{idioma.ViewAsginarCampeonatoCategoriaLabel_idEquipo}"/>
+                        <h:outputText value="#{asginarCampeonatoCategoriaController.selected.idEquipo.nomEquipo}" title="#{idioma.ViewAsginarCampeonatoCategoriaTitle_idEquipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="AsginarCampeonatoCategoriaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoAlbitroEditDlg" widgetVar="TipoAlbitroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditTipoAlbitroTitle}">
+            <h:form id="TipoAlbitroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoAlbitroController.selected != null}">
+                        <p:outputLabel value="#{idioma.EditTipoAlbitroLabel_idTipoAlbitro}" for="idTipoAlbitro" />
+                        <p:inputText id="idTipoAlbitro" value="#{tipoAlbitroController.selected.idTipoAlbitro}" title="#{idioma.EditTipoAlbitroTitle_idTipoAlbitro}" required="true" requiredMessage="#{idioma.EditTipoAlbitroRequiredMessage_idTipoAlbitro}"/>
+                        <p:outputLabel value="#{idioma.EditTipoAlbitroLabel_tipoAlbitro}" for="tipoAlbitro" />
+                        <p:inputText id="tipoAlbitro" value="#{tipoAlbitroController.selected.tipoAlbitro}" title="#{idioma.EditTipoAlbitroTitle_tipoAlbitro}" />
+                        <p:outputLabel value="#{idioma.EditTipoAlbitroLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{tipoAlbitroController.selected.observacion}" title="#{idioma.EditTipoAlbitroTitle_observacion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoAlbitroController.update}" value="#{idioma.Save}" update="display,:TipoAlbitroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoAlbitroEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="TipoAlbitroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

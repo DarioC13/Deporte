@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comision_de_disiplina_subreport2" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="73783d40-d5e6-41ec-a61a-06151b400720">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="7bbb498c-a621-4944-bf9f-b141b2bc675d"/>
+	<parameter name="sentencia" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     marcador_equipo.`id_marcador_equipo` AS marcador_equipo_id_marcador_equipo,
+     marcador_equipo.`id_encuentro` AS marcador_equipo_id_encuentro,
+     marcador_equipo.`id_equipo` AS marcador_equipo_id_equipo,
+     marcador_equipo.`id_estado_encuentro` AS marcador_equipo_id_estado_encuentro,
+     marcador_equipo.`num_gol_favor` AS marcador_equipo_num_gol_favor,
+     marcador_equipo.`num_gol_contra` AS marcador_equipo_num_gol_contra,
+     marcador_equipo.`diferencia_goles` AS marcador_equipo_diferencia_goles,
+     marcador_equipo.`informe_encuentro_equipo` AS marcador_equipo_informe_encuentro_equipo,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono
+FROM
+     `equipo` equipo INNER JOIN `marcador_equipo` marcador_equipo ON equipo.`id_equipo` = marcador_equipo.`id_equipo`
+where marcador_equipo.`id_encuentro`=$P{sentencia}]]>
+	</queryString>
+	<field name="marcador_equipo_id_marcador_equipo" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_encuentro" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="marcador_equipo_id_estado_encuentro" class="java.lang.Integer"/>
+	<field name="marcador_equipo_num_gol_favor" class="java.lang.Integer"/>
+	<field name="marcador_equipo_num_gol_contra" class="java.lang.Integer"/>
+	<field name="marcador_equipo_diferencia_goles" class="java.lang.Integer"/>
+	<field name="marcador_equipo_informe_encuentro_equipo" class="java.lang.String"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="07336786-8bd0-47c0-93e3-e08f6432b7d1"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcador_equipo_num_gol_favor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4578d701-f84a-49c0-8c35-b9ffa95bc899"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipo_nom_equipo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

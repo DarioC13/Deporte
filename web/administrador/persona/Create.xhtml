@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaCreateDlg" widgetVar="PersonaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreatePersonaTitle}">
+            <h:form id="PersonaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{personaController.selected.name}" title="#{idioma.CreatePersonaTitle_name}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{personaController.selected.apellido}" title="#{idioma.CreatePersonaTitle_apellido}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_cedula}" for="cedula" />
+                        <p:inputText id="cedula" value="#{personaController.selected.cedula}" title="#{idioma.CreatePersonaTitle_cedula}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy" locale="es" navigator="true" value="#{personaController.selected.fechaNacimiento}" title="#{idioma.EditPersonaTitle_fechaNacimiento}"  showOn="button"/>
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{personaController.selected.celular}" title="#{idioma.CreatePersonaTitle_celular}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{personaController.selected.correo}" title="#{idioma.CreatePersonaTitle_correo}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_genero}" for="genero" />
+                        <p:inputText id="genero" value="#{personaController.selected.genero}" title="#{idioma.CreatePersonaTitle_genero}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{personaController.selected.direccion}" title="#{idioma.CreatePersonaTitle_direccion}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{personaController.selected.foto}" title="#{idioma.CreatePersonaTitle_foto}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_numCamistea}" for="numCamistea" />
+                        <p:inputText id="numCamistea" value="#{personaController.selected.numCamistea}" title="#{idioma.CreatePersonaTitle_numCamistea}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{personaController.selected.estado}" title="#{idioma.CreatePersonaTitle_estado}" />
+                        <p:outputLabel value="#{idioma.CreatePersonaLabel_idRolDeportivo}" for="idRolDeportivo" />
+                        <p:selectOneMenu id="idRolDeportivo" value="#{personaController.selected.idRolDeportivo}" >
+                            <f:selectItems value="#{rolDeportivoController.itemsAvailableSelectOne}"
+                                           var="idRolDeportivoItem"
+                                           itemValue="#{idRolDeportivoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check" actionListener="#{personaController.create}" value="#{idioma.Save}" update="display,:PersonaListForm:datalist,:growl" oncomplete="handleSubmit(args,'PersonaCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="PersonaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

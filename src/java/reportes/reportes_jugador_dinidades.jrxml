@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3828fe6-6c52-4268-a95d-e773d18b1bad">
+	<property name="ireport.zoom" value="0.9090909090909098"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\SISTEMA\\ProyectoDeporteSistema\\web\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona.`id_persona` AS persona_id_persona,
+     persona.`id_rol_deportivo` AS persona_id_rol_deportivo,
+     persona.`name` AS persona_name,
+     persona.`apellido` AS persona_apellido,
+     persona.`cedula` AS persona_cedula,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`celular` AS persona_celular,
+     persona.`correo` AS persona_correo,
+     persona.`genero` AS persona_genero,
+     persona.`direccion` AS persona_direccion,
+     persona.`foto` AS persona_foto,
+     persona.`num_camistea` AS persona_num_camistea,
+     persona.`estado` AS persona_estado,
+     asignar_persona_equipo.`id_asignar_persona_equipo` AS asignar_persona_equipo_id_asignar_persona_equipo,
+     asignar_persona_equipo.`id_persona` AS asignar_persona_equipo_id_persona,
+     asignar_persona_equipo.`id_equipo` AS asignar_persona_equipo_id_equipo,
+     asignar_persona_equipo.`observacion` AS asignar_persona_equipo_observacion,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono
+FROM
+     `persona` persona INNER JOIN `asignar_persona_equipo` asignar_persona_equipo ON persona.`id_persona` = asignar_persona_equipo.`id_persona`
+     INNER JOIN `equipo` equipo ON asignar_persona_equipo.`id_equipo` = equipo.`id_equipo`
+WHERE
+     equipo.`id_equipo` = $P{id}]]>
+	</queryString>
+	<field name="persona_id_persona" class="java.lang.Integer"/>
+	<field name="persona_id_rol_deportivo" class="java.lang.Integer"/>
+	<field name="persona_name" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="persona_cedula" class="java.lang.String"/>
+	<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="persona_celular" class="java.lang.String"/>
+	<field name="persona_correo" class="java.lang.String"/>
+	<field name="persona_genero" class="java.lang.Integer"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="persona_foto" class="java.lang.String"/>
+	<field name="persona_num_camistea" class="java.lang.Integer"/>
+	<field name="persona_estado" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_asignar_persona_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_persona" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_observacion" class="java.lang.String"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<line>
+				<reportElement x="390" y="70" width="165" height="1" uuid="c7fdefab-d88b-4e6a-ad75-edf8a2b8c835"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="390" y="0" width="165" height="68" uuid="d9a6e9c8-b349-4184-8bb5-54810cfaa8a2"/>
+				<imageExpression><![CDATA["D:\\SISTEMA\\logolimon2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<textField>
+				<reportElement x="70" y="0" width="485" height="29" uuid="ade5800b-c010-4127-985c-9215b1d307cb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Open Sans" size="20" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipo_nom_equipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="0" width="66" height="29" uuid="e60e6326-758b-4ea0-8128-639a5c93b186"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Open Sans" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLUB: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="499">
+			<subreport>
+				<reportElement x="0" y="4" width="555" height="275" uuid="1dc59f79-21e7-4ec9-bd31-ce225611f166"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$P{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reportes_jugador_dinidades_subreport_jugadores_habilitados.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="335" width="555" height="164" uuid="e8c13da8-45ac-4473-b64d-1508a2b7fe51"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$P{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["D:\\SISTEMA\\ProyectoDeporteSistema\\build\\web\\reportes\\reportes_jugador_dinidades_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="98">
+			<staticText>
+				<reportElement x="0" y="79" width="555" height="15" uuid="00ec4101-83a8-44a3-9d96-c746a4a05e35"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Telefono: (593) 072770146 - www.limonindanza.gob.ec]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="555" height="15" uuid="ac053dd4-fe49-45ee-909f-10f029ed18fa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Direccion: 10 de Agosto y AV. el Ejercito - RUC: 1460000450001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="197" height="20" uuid="9e055291-fe4b-4c49-8dc7-d036d6184f36"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[VOCAL DE DISCIPLINA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="197" height="20" uuid="af8a6b5a-e132-4d4b-a0ef-03b0db1cb662"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift"/>
+				</textElement>
+				<text><![CDATA[Manuel Chillogallo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="25" width="197" height="20" uuid="caaf0ede-0110-4fa4-a1e1-b2424221d560"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[SUB COORDINADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="5" width="197" height="20" uuid="bf23235c-2d39-42e2-bf83-816842187ba8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahnschrift"/>
+				</textElement>
+				<text><![CDATA[Kevin Bustamante]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="4" width="193" height="1" uuid="6b5780fb-2e1c-420a-b4f8-26e980d74e14"/>
+			</line>
+			<line>
+				<reportElement x="362" y="4" width="193" height="1" uuid="3a46f00d-f8cc-4757-9548-ad97748ea6d7"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

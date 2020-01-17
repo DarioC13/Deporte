@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportes_jugador_dinidades_subreport_jugadores_habilitados" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1a40b3a4-1a92-4237-b964-f8eec0d2c0df">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona.`id_persona` AS persona_id_persona,
+     persona.`id_rol_deportivo` AS persona_id_rol_deportivo,
+     persona.`name` AS persona_name,
+     persona.`apellido` AS persona_apellido,
+     persona.`cedula` AS persona_cedula,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`celular` AS persona_celular,
+     persona.`correo` AS persona_correo,
+     persona.`genero` AS persona_genero,
+     persona.`direccion` AS persona_direccion,
+     persona.`foto` AS persona_foto,
+     persona.`num_camistea` AS persona_num_camistea,
+     persona.`estado` AS persona_estado,
+     asignar_persona_equipo.`id_asignar_persona_equipo` AS asignar_persona_equipo_id_asignar_persona_equipo,
+     asignar_persona_equipo.`id_persona` AS asignar_persona_equipo_id_persona,
+     asignar_persona_equipo.`id_equipo` AS asignar_persona_equipo_id_equipo,
+     asignar_persona_equipo.`observacion` AS asignar_persona_equipo_observacion,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono
+FROM
+     `persona` persona INNER JOIN `asignar_persona_equipo` asignar_persona_equipo ON persona.`id_persona` = asignar_persona_equipo.`id_persona`
+     INNER JOIN `equipo` equipo ON asignar_persona_equipo.`id_equipo` = equipo.`id_equipo`
+WHERE
+     equipo.`id_equipo`= $P{id}]]>
+	</queryString>
+	<field name="persona_id_persona" class="java.lang.Integer"/>
+	<field name="persona_id_rol_deportivo" class="java.lang.Integer"/>
+	<field name="persona_name" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="persona_cedula" class="java.lang.String"/>
+	<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="persona_celular" class="java.lang.String"/>
+	<field name="persona_correo" class="java.lang.String"/>
+	<field name="persona_genero" class="java.lang.Integer"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="persona_foto" class="java.lang.String"/>
+	<field name="persona_num_camistea" class="java.lang.Integer"/>
+	<field name="persona_estado" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_asignar_persona_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_persona" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_observacion" class="java.lang.String"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="57">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#009900" backcolor="#009900" uuid="8d14de75-7293-4068-9329-6731d8b8c00c"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" forecolor="#FFFFFF" uuid="5073759c-bd6c-4c5a-90a8-a965f41f6957"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jugadores Habilitados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="555" height="23" uuid="7e42a53b-ee05-4a03-9c1c-bbd213d42150"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[NOMBRES Y APELLIDOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="75" y="0" width="129" height="20" uuid="e8d0fe2d-c4ff-4597-88a2-61357e2f34a0"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="0" width="127" height="20" uuid="435388d2-eed0-455e-9b5c-6f0bdda5b71c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

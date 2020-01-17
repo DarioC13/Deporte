@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcadorEquipoCreateDlg" widgetVar="MarcadorEquipoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreateMarcadorEquipoTitle}">
+            <h:form id="MarcadorEquipoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcadorEquipoController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_numGolFavor}" for="numGolFavor" />
+                        <p:inputText id="numGolFavor" value="#{marcadorEquipoController.selected.numGolFavor}" title="#{idioma.CreateMarcadorEquipoTitle_numGolFavor}" />
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_numGolContra}" for="numGolContra" />
+                        <p:inputText id="numGolContra" value="#{marcadorEquipoController.selected.numGolContra}" title="#{idioma.CreateMarcadorEquipoTitle_numGolContra}" />
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_diferenciaGoles}" for="diferenciaGoles" />
+                        <p:inputText id="diferenciaGoles" value="#{marcadorEquipoController.selected.diferenciaGoles}" title="#{idioma.CreateMarcadorEquipoTitle_diferenciaGoles}" />
+                        
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_informeEncuentroEquipo}" for="informeEncuentroEquipo" />
+                        <p:inputText id="informeEncuentroEquipo" value="#{marcadorEquipoController.selected.informeEncuentroEquipo}" title="#{idioma.CreateMarcadorEquipoTitle_informeEncuentroEquipo}" />
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_idEncuentro}" for="idEncuentro" />
+                        <p:selectOneMenu id="idEncuentro" value="#{marcadorEquipoController.selected.idEncuentro}" >
+                            <f:selectItems value="#{encuentrosController.itemsAvailableSelectOne}"
+                                           var="idEncuentroItem"
+                                           itemValue="#{idEncuentroItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_idEquipo}" for="idEquipo" />
+                        <p:selectOneMenu id="idEquipo" value="#{marcadorEquipoController.selected.idEquipo}" >
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoItem"
+                                           itemValue="#{idEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.CreateMarcadorEquipoLabel_idEstadoEncuentro}" for="idEstadoEncuentro" />
+                        <p:selectOneMenu id="idEstadoEncuentro" value="#{marcadorEquipoController.selected.idEstadoEncuentro}" >
+                            <f:selectItems value="#{estadoEncuentroController.itemsAvailableSelectOne}"
+                                           var="idEstadoEncuentroItem"
+                                           itemValue="#{idEstadoEncuentroItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check" actionListener="#{marcadorEquipoController.create}" value="#{idioma.Save}" update="display,:MarcadorEquipoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MarcadorEquipoCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="MarcadorEquipoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

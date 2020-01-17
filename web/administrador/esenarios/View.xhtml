@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EsenariosViewDlg" widgetVar="EsenariosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewEsenariosTitle}">
+            <h:form id="EsenariosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{esenariosController.selected != null}">
+                       
+                        <h:outputText value="#{idioma.ViewEsenariosLabel_esesario}"/>
+                        <h:outputText value="#{esenariosController.selected.esesario}" title="#{idioma.ViewEsenariosTitle_esesario}"/>
+                        <h:outputText value="#{idioma.ViewEsenariosLabel_observacion}"/>
+                        <h:outputText value="#{esenariosController.selected.observacion}" title="#{idioma.ViewEsenariosTitle_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="EsenariosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

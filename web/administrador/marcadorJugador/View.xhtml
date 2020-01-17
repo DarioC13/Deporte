@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcadorJugadorViewDlg" widgetVar="MarcadorJugadorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewMarcadorJugadorTitle}">
+            <h:form id="MarcadorJugadorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcadorJugadorController.selected != null}">
+                       
+                        <h:outputText value="#{idioma.ViewMarcadorJugadorLabel_gol}"/>
+                        <h:outputText value="#{marcadorJugadorController.selected.gol}" title="#{idioma.ViewMarcadorJugadorTitle_gol}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorJugadorLabel_informeJugador}"/>
+                        <h:outputText value="#{marcadorJugadorController.selected.informeJugador}" title="#{idioma.ViewMarcadorJugadorTitle_informeJugador}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorJugadorLabel_idEncuentros}"/>
+                        <h:outputText value="#{marcadorJugadorController.selected.idEncuentros.fechaEncuentro}" title="#{idioma.ViewMarcadorJugadorTitle_idEncuentros}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorJugadorLabel_idPersona}"/>
+                        <h:outputText value="#{marcadorJugadorController.selected.idPersona.name}&nbsp;#{marcadorJugadorController.selected.idPersona.apellido}" title="#{idioma.ViewMarcadorJugadorTitle_idPersona}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorJugadorLabel_idSanciones}"/>
+                        <h:outputText value="#{marcadorJugadorController.selected.idSanciones.sancion}" title="#{idioma.ViewMarcadorJugadorTitle_idSanciones}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="MarcadorJugadorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

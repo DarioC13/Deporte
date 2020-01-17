@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MarcadorEquipoViewDlg" widgetVar="MarcadorEquipoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewMarcadorEquipoTitle}">
+            <h:form id="MarcadorEquipoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{marcadorEquipoController.selected != null}">
+                       
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_numGolFavor}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.numGolFavor}" title="#{idioma.ViewMarcadorEquipoTitle_numGolFavor}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_numGolContra}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.numGolContra}" title="#{idioma.ViewMarcadorEquipoTitle_numGolContra}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_diferenciaGoles}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.diferenciaGoles}" title="#{idioma.ViewMarcadorEquipoTitle_diferenciaGoles}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_informeEncuentroEquipo}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.informeEncuentroEquipo}" title="#{idioma.ViewMarcadorEquipoTitle_informeEncuentroEquipo}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_idEncuentro}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.idEncuentro}" title="#{idioma.ViewMarcadorEquipoTitle_idEncuentro}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_idEquipo}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.idEquipo}" title="#{idioma.ViewMarcadorEquipoTitle_idEquipo}"/>
+                        <h:outputText value="#{idioma.ViewMarcadorEquipoLabel_idEstadoEncuentro}"/>
+                        <h:outputText value="#{marcadorEquipoController.selected.idEstadoEncuentro}" title="#{idioma.ViewMarcadorEquipoTitle_idEstadoEncuentro}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="MarcadorEquipoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

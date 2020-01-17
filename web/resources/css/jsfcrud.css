@@ -1,0 +1,212 @@
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ui-layout-north {
+    z-index: 10 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ui-layout-unit-header{
+    background: linear-gradient(-100deg,#136A8A,#267871);
+    border: none;
+    font-family: 'open sans';
+    font-size: 15px;
+    color: #fff;
+}
+
+.ui-menu{
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    background: #0D526B;
+    border: none;
+    box-shadow: 1px 1px 4px #000000;
+}
+@media (max-width : 766px) {
+    .ui-menu{
+        height: 80px;
+        text-align: center;
+    }
+}
+.boxAccesos{
+     background-color: #f2f2f2;
+    border-color: #d8d8d8;
+    width: auto;
+    height: auto;
+    max-width: 320px;
+    max-height: 230px;
+    border-width: 3px;
+    border-style: none;
+    box-shadow: 0px 0px 7px 0px #BABABA; /*0px 1px 5px 1px*/
+    padding: 10px 10px;/* 10px 10px*/
+    border-radius: 6px;
+    display: inline-block;
+    margin: 10px ;/*10px*/
+
+}
+.icono{
+    width: 55px;
+    height: 55px;
+}
+.titulosAccesos{
+    font-family: 'open sans black';
+
+}
+
+.ui-menu-list .ui-corner-all{
+    background:#0D526B;
+    color:gainsboro;
+}
+.ui-menu-list .ui-corner-all:hover{
+    color: #fff;
+    box-shadow: none;
+
+}
+.ui-menu-list .ui-corner-all .ui-state-hover{
+    box-shadow: none;
+}
+
+.ui-widget{
+    font-size: 14px 
+}
+
+.btnInicio{
+    margin-right: 10px;
+}
+.btnInicio:hover{
+    background: #0D526B;
+    box-shadow:none;
+}
+
+.ui-datatable-footer .ui-button{
+    text-decoration: none;
+    background: #fff;
+    border:1px solid #15a4fa;
+    outline: none;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+.ui-datatable-footer .ui-button:hover{
+    background: #15a4fa;
+    color: #fff;
+    transition: .5s;
+}
+
+.ui-panelgrid{
+    margin-bottom: 5px;
+}
+/*para los creat editar etc*/
+.ui-dialog-titlebar{
+    border-bottom: 3px solid transparent;
+    color: #000000;font-size: 15px;font-family: 'open sans black';
+    background: #ccffcc;
+}
+.ui-dialog-titlebar-icon{
+    width: 20px;
+    height: 20px;
+    background:none;
+}
+.ui-dialog-titlebar-icon:hover{
+    box-shadow: none;
+    background:none;   border:1px solid transparent;
+}
+
+
+.ui-dialog{
+    box-shadow: none;
+    background: #ffffff;
+}
+.ui-panel{
+    border:transparent;
+}
+/*fin*/
+
+
+.ui-menuitem .ui-button{
+    width: 130px; height: 30px; background: #ECEFF1;  
+    font-size: 10px;
+    color: #000000;
+    border-bottom: 3px solid  transparent;
+    transition: 0.3s;
+    border:transparent;
+}
+.ui-menuitem .ui-button:hover{
+    border-bottom: 2px solid  crimson;
+    transition: 0.3s;
+    box-shadow: none;
+    color: crimson;
+}
+
+
+/*tabla efecto hover*/
+.ui-datatable-data .ui-state-hover:hover{
+    background: #ccffcc;
+    box-shadow: none;
+}
+/*fin*/
+.ui-panel-titlebar{
+    background: #ECEFF1;
+    font-family: 'open sans black';
+    border: transparent;
+}
+/*tabla*/
+table{
+    background: white;
+    width: 100%;
+    margin: 0 auto;
+}
+.ui-datatable-tablewrapper table th{
+    font-family: 'open sans black';
+    border-bottom: 1px solid #364043;
+    font-size: 14px;
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+/*tabla fin*/
+.ui-dialog-content .ui-button{
+    border:1px solid #15a4fa;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+.ui-dialog-content .ui-button:hover{
+    background: #15a4fa;
+    color: #fff;
+    transition: .5s;
+}
+
+/*footer*/
+.copyright-section {
+    font-size: 12px;
+    background-color : #2d2d2d;
+    color: #fff;
+    padding          : 15px 0;
+}
+
+.copytext {
+
+    text-transform : uppercase;
+    font-weight    : 600;
+     
+}
+
+.copyright-section li a {
+    display   : block;
+    font-size : 13px;
+    color     : #AFAFAF;
+    text-decoration: none;
+}
+.copyright-section li a:hover {
+    color: #fff;
+}

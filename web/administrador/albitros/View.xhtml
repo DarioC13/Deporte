@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlbitrosViewDlg" widgetVar="AlbitrosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewAlbitrosTitle}">
+            <h:form id="AlbitrosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{albitrosController.selected != null}">
+                        <h:outputText value="#{idioma.ViewAlbitrosLabel_idAlbitros}"/>
+                        <h:outputText value="#{albitrosController.selected.idAlbitros}" title="#{idioma.ViewAlbitrosTitle_idAlbitros}"/>
+                        <h:outputText value="#{idioma.ViewAlbitrosLabel_observacion}"/>
+                        <h:outputText value="#{albitrosController.selected.observacion}" title="#{idioma.ViewAlbitrosTitle_observacion}"/>
+                        <h:outputText value="#{idioma.ViewAlbitrosLabel_idPersona}"/>
+                        <h:outputText value="#{albitrosController.selected.idPersona.name}&nbsp;#{albitrosController.selected.idPersona.apellido}" title="#{idioma.ViewAlbitrosTitle_idPersona}"/>
+                        <h:outputText value="#{idioma.ViewAlbitrosLabel_idTipoAlbitro}"/>
+                        <h:outputText value="#{albitrosController.selected.idTipoAlbitro.tipoAlbitro}" title="#{idioma.ViewAlbitrosTitle_idTipoAlbitro}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="AlbitrosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

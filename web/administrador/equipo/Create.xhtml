@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipoCreateDlg" widgetVar="EquipoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreateEquipoTitle}">
+            <h:form id="EquipoCreateForm" enctype="multipart/form-data" >
+                <p:growl id="messages" showDetail="true" />
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipoController.selected != null}">
+                        <p:outputLabel value="#{idioma.CreateEquipoLabel_nomEquipo}" for="nomEquipo" />
+                        <p:inputText class="txtb" id="nomEquipo" value="#{equipoController.selected.nomEquipo}" title="#{idioma.CreateEquipoTitle_nomEquipo}" />
+                        <p:outputLabel value="#{idioma.CreateEquipoLabel_fechaInscripcion}" for="fechaInscripcion" />
+                        <p:calendar id="fechaInscripcion" pattern="MM/dd/yyyy" locale="es" value="#{equipoController.selected.fechaInscripcion}" title="#{idioma.EditEquipoTitle_fechaInscripcion}"  showOn="button"/>
+                        
+                        <p:outputLabel value="#{idioma.CreateEquipoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{equipoController.selected.direccion}" title="#{idioma.CreateEquipoTitle_direccion}" />
+                        <p:outputLabel value="#{idioma.CreateEquipoLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{equipoController.selected.email}" title="#{idioma.CreateEquipoTitle_email}" />
+                        <p:outputLabel value="#{idioma.CreateEquipoLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{equipoController.selected.telefono}" title="#{idioma.CreateEquipoTitle_telefono}" />
+                        
+                        <p:outputLabel value="Logo" />
+                        <p:fileUpload fileUploadListener="#{equipoController.handleFileUpload}" 
+                                    mode="advanced" 
+                                    dragDropSupport="false"
+                                    update="messages" 
+                                    sizeLimit="100000" 
+                                    fileLimit="3" 
+                                    allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+                                    cancelLabel="Cancelar"
+                                    uploadLabel="Subir Imagen"
+                                    label="Elegir"
+                                    style="width: 650px;"
+                                    />
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check" actionListener="#{equipoController.create}" value="#{idioma.Save}" update="display,:EquipoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EquipoCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="EquipoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

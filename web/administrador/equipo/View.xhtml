@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipoViewDlg" widgetVar="EquipoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewEquipoTitle}">
+            <h:form id="EquipoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipoController.selected != null}">
+                        
+                        <h:outputText value="#{idioma.ViewEquipoLabel_nomEquipo}"/>
+                        <h:outputText value="#{equipoController.selected.nomEquipo}" title="#{idioma.ViewEquipoTitle_nomEquipo}"/>
+                        <h:outputText value="#{idioma.ViewEquipoLabel_fechaInscripcion}"/>
+                        <h:outputText value="#{equipoController.selected.fechaInscripcion}" title="#{idioma.ViewEquipoTitle_fechaInscripcion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{idioma.ViewEquipoLabel_logo}"/>
+                        <h:outputText value="#{equipoController.selected.logo}" title="#{idioma.ViewEquipoTitle_logo}"/>
+                        <h:outputText value="#{idioma.ViewEquipoLabel_direccion}"/>
+                        <h:outputText value="#{equipoController.selected.direccion}" title="#{idioma.ViewEquipoTitle_direccion}"/>
+                        <h:outputText value="#{idioma.ViewEquipoLabel_email}"/>
+                        <h:outputText value="#{equipoController.selected.email}" title="#{idioma.ViewEquipoTitle_email}"/>
+                        <h:outputText value="#{idioma.ViewEquipoLabel_telefono}"/>
+                        <h:outputText value="#{equipoController.selected.telefono}" title="#{idioma.ViewEquipoTitle_telefono}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="EquipoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

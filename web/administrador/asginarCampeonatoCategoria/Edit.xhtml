@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsginarCampeonatoCategoriaEditDlg" widgetVar="AsginarCampeonatoCategoriaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditAsginarCampeonatoCategoriaTitle}">
+            <h:form id="AsginarCampeonatoCategoriaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asginarCampeonatoCategoriaController.selected != null}">
+
+                        <p:outputLabel value="#{idioma.EditAsginarCampeonatoCategoriaLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{asginarCampeonatoCategoriaController.selected.observacion}" title="#{idioma.EditAsginarCampeonatoCategoriaTitle_observacion}" />
+                        <p:outputLabel value="#{idioma.EditAsginarCampeonatoCategoriaLabel_idCampeonato}" for="idCampeonato" />
+                        <p:selectOneMenu id="idCampeonato" value="#{asginarCampeonatoCategoriaController.selected.idCampeonato}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{campeonatoController.itemsAvailableSelectOne}"
+                                           var="idCampeonatoItem"
+                                           itemValue="#{idCampeonatoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditAsginarCampeonatoCategoriaLabel_idCategoria}" for="idCategoria" />
+                        <p:selectOneMenu id="idCategoria" value="#{asginarCampeonatoCategoriaController.selected.idCategoria}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"
+                                           var="idCategoriaItem"
+                                           itemValue="#{idCategoriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditAsginarCampeonatoCategoriaLabel_idEquipo}" for="idEquipo" />
+                        <p:selectOneMenu id="idEquipo" value="#{asginarCampeonatoCategoriaController.selected.idEquipo}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoItem"
+                                           itemValue="#{idEquipoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asginarCampeonatoCategoriaController.update}" value="#{idioma.Save}" update="display,:AsginarCampeonatoCategoriaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AsginarCampeonatoCategoriaEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="AsginarCampeonatoCategoriaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

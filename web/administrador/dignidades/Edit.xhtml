@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DignidadesEditDlg" widgetVar="DignidadesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditDignidadesTitle}">
+            <h:form id="DignidadesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dignidadesController.selected != null}">
+
+                        <p:outputLabel value="#{idioma.EditDignidadesLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{dignidadesController.selected.cargo}" title="#{idioma.EditDignidadesTitle_cargo}" />
+                        <p:outputLabel value="#{idioma.EditDignidadesLabel_descipcion}" for="descipcion" />
+                        <p:inputText id="descipcion" value="#{dignidadesController.selected.descipcion}" title="#{idioma.EditDignidadesTitle_descipcion}" />
+                        <p:outputLabel value="#{idioma.EditDignidadesLabel_fechaRegistro}" for="fechaRegistro" />
+                        <p:calendar id="fechaRegistro" locale="es" pattern="MM/dd/yyyy HH:mm:ss" value="#{dignidadesController.selected.fechaRegistro}" title="#{idioma.EditDignidadesTitle_fechaRegistro}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dignidadesController.update}" value="#{idioma.Save}" update="display,:DignidadesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DignidadesEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="DignidadesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

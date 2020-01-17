@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaEditDlg" widgetVar="PersonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditPersonaTitle}">
+            <h:form id="PersonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{personaController.selected.name}" title="#{idioma.EditPersonaTitle_name}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{personaController.selected.apellido}" title="#{idioma.EditPersonaTitle_apellido}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_cedula}" for="cedula" />
+                        <p:inputText id="cedula" value="#{personaController.selected.cedula}" title="#{idioma.EditPersonaTitle_cedula}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy" locale="es" value="#{personaController.selected.fechaNacimiento}" title="#{idioma.EditPersonaTitle_fechaNacimiento}"  showOn="button"/>
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{personaController.selected.celular}" title="#{idioma.EditPersonaTitle_celular}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{personaController.selected.correo}" title="#{idioma.EditPersonaTitle_correo}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_genero}" for="genero" />
+                        <p:inputText id="genero" value="#{personaController.selected.genero}" title="#{idioma.EditPersonaTitle_genero}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{personaController.selected.direccion}" title="#{idioma.EditPersonaTitle_direccion}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_foto}" for="foto" />
+                        <p:inputText id="foto" value="#{personaController.selected.foto}" title="#{idioma.EditPersonaTitle_foto}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_numCamistea}" for="numCamistea" />
+                        <p:inputText id="numCamistea" value="#{personaController.selected.numCamistea}" title="#{idioma.EditPersonaTitle_numCamistea}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{personaController.selected.estado}" title="#{idioma.EditPersonaTitle_estado}" />
+                        <p:outputLabel value="#{idioma.EditPersonaLabel_idRolDeportivo}" for="idRolDeportivo" />
+                        <p:selectOneMenu id="idRolDeportivo" value="#{personaController.selected.idRolDeportivo}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{rolDeportivoController.itemsAvailableSelectOne}"
+                                           var="idRolDeportivoItem"
+                                           itemValue="#{idRolDeportivoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaController.update}" value="#{idioma.Save}" update="display,:PersonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonaEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="PersonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

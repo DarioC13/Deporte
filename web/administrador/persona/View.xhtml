@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaViewDlg" widgetVar="PersonaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewPersonaTitle}">
+            <h:form id="PersonaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
+                       
+                        <h:outputText value="#{idioma.ViewPersonaLabel_name}"/>
+                        <h:outputText value="#{personaController.selected.name}" title="#{idioma.ViewPersonaTitle_name}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_apellido}"/>
+                        <h:outputText value="#{personaController.selected.apellido}" title="#{idioma.ViewPersonaTitle_apellido}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_cedula}"/>
+                        <h:outputText value="#{personaController.selected.cedula}" title="#{idioma.ViewPersonaTitle_cedula}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{personaController.selected.fechaNacimiento}" title="#{idioma.ViewPersonaTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_celular}"/>
+                        <h:outputText value="#{personaController.selected.celular}" title="#{idioma.ViewPersonaTitle_celular}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_correo}"/>
+                        <h:outputText value="#{personaController.selected.correo}" title="#{idioma.ViewPersonaTitle_correo}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_genero}"/>
+                        <h:outputText value="#{personaController.selected.genero}" title="#{idioma.ViewPersonaTitle_genero}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_direccion}"/>
+                        <h:outputText value="#{personaController.selected.direccion}" title="#{idioma.ViewPersonaTitle_direccion}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_foto}"/>
+                        <h:outputText value="#{personaController.selected.foto}" title="#{idioma.ViewPersonaTitle_foto}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_numCamistea}"/>
+                        <h:outputText value="#{personaController.selected.numCamistea}" title="#{idioma.ViewPersonaTitle_numCamistea}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_estado}"/>
+                        <h:outputText value="#{personaController.selected.estado}" title="#{idioma.ViewPersonaTitle_estado}"/>
+                        <h:outputText value="#{idioma.ViewPersonaLabel_idRolDeportivo}"/>
+                        <h:outputText value="#{personaController.selected.idRolDeportivo.rolDeportivo}" title="#{idioma.ViewPersonaTitle_idRolDeportivo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="PersonaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

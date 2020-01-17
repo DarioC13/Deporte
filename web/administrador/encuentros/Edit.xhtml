@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EncuentrosEditDlg" widgetVar="EncuentrosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditEncuentrosTitle}">
+            <h:form id="EncuentrosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{encuentrosController.selected != null}">
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_fechaEncuentro}" for="fechaEncuentro" />
+                        <p:calendar id="fechaEncuentro" pattern="MM/dd/yyyy" locale="es" value="#{encuentrosController.selected.fechaEncuentro}" title="#{idioma.EditEncuentrosTitle_fechaEncuentro}"  showOn="button"/>
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_hora}" for="hora" />
+                        <p:inputText id="hora" value="#{encuentrosController.selected.hora}" title="#{idioma.EditEncuentrosTitle_hora}" />
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_asignarCampeonatoCategoria}" for="asignarCampeonatoCategoria" />
+                        <p:selectOneMenu id="asignarCampeonatoCategoria" value="#{encuentrosController.selected.asignarCampeonatoCategoria}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{asginarCampeonatoCategoriaController.itemsAvailableSelectOne}"
+                                           var="asignarCampeonatoCategoriaItem"
+                                           itemValue="#{asignarCampeonatoCategoriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_idEquipoA}" for="idEquipoA" />
+                        <p:selectOneMenu id="idEquipoA" value="#{encuentrosController.selected.idEquipoA}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoAItem"
+                                           itemValue="#{idEquipoAItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_idEquipoB}" for="idEquipoB" />
+                        <p:selectOneMenu id="idEquipoB" value="#{encuentrosController.selected.idEquipoB}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoBItem"
+                                           itemValue="#{idEquipoBItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditEncuentrosLabel_idEsenario}" for="idEsenario" />
+                        <p:selectOneMenu id="idEsenario" value="#{encuentrosController.selected.idEsenario}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{esenariosController.itemsAvailableSelectOne}"
+                                           var="idEsenarioItem"
+                                           itemValue="#{idEsenarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{encuentrosController.update}" value="#{idioma.Save}" update="display,:EncuentrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EncuentrosEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="EncuentrosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

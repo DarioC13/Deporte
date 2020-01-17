@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EncuentrosCreateDlg" widgetVar="EncuentrosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreateEncuentrosTitle}">
+            <h:form id="EncuentrosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{encuentrosController.selected != null}">
+
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_fechaEncuentro}" for="fechaEncuentro" />
+                        <p:calendar id="fechaEncuentro" pattern="MM/dd/yyyy" locale="es" value="#{encuentrosController.selected.fechaEncuentro}" title="#{idioma.EditEncuentrosTitle_fechaEncuentro}"  showOn="button"/>
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_hora}" for="hora" />
+                        <p:inputText id="hora" value="#{encuentrosController.selected.hora}" title="#{idioma.CreateEncuentrosTitle_hora}" />
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_asignarCampeonatoCategoria}" for="asignarCampeonatoCategoria" />
+                        <p:selectOneMenu id="asignarCampeonatoCategoria" value="#{encuentrosController.selected.asignarCampeonatoCategoria}" >
+                            <f:selectItems value="#{asginarCampeonatoCategoriaController.itemsAvailableSelectOne}"
+                                           var="asignarCampeonatoCategoriaItem"
+                                           itemValue="#{asignarCampeonatoCategoriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_idEquipoA}" for="idEquipoA" />
+                        <p:selectOneMenu id="idEquipoA" value="#{encuentrosController.selected.idEquipoA}" >
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoAItem"
+                                           itemValue="#{idEquipoAItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_idEquipoB}" for="idEquipoB" />
+                        <p:selectOneMenu id="idEquipoB" value="#{encuentrosController.selected.idEquipoB}" >
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoBItem"
+                                           itemValue="#{idEquipoBItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.CreateEncuentrosLabel_idEsenario}" for="idEsenario" />
+                        <p:selectOneMenu id="idEsenario" value="#{encuentrosController.selected.idEsenario}" >
+                            <f:selectItems value="#{esenariosController.itemsAvailableSelectOne}"
+                                           var="idEsenarioItem"
+                                           itemValue="#{idEsenarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check"  actionListener="#{encuentrosController.create}" value="#{idioma.Save}" update="display,:EncuentrosListForm:datalist,:growl" oncomplete="handleSubmit(args,'EncuentrosCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="EncuentrosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

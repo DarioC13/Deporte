@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsginarDignidadesViewDlg" widgetVar="AsginarDignidadesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewAsginarDignidadesTitle}">
+            <h:form id="AsginarDignidadesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asginarDignidadesController.selected != null}">
+
+                        <h:outputText value="#{idioma.ViewAsginarDignidadesLabel_obervacion}"/>
+                        <h:outputText value="#{asginarDignidadesController.selected.obervacion}" title="#{idioma.ViewAsginarDignidadesTitle_obervacion}"/>
+                        <h:outputText value="#{idioma.ViewAsginarDignidadesLabel_idDignidades}"/>
+                        <h:outputText value="#{asginarDignidadesController.selected.idDignidades.cargo}" title="#{idioma.ViewAsginarDignidadesTitle_idDignidades}"/>
+                        <h:outputText value="#{idioma.ViewAsginarDignidadesLabel_idPersona}"/>
+                        <h:outputText value="#{asginarDignidadesController.selected.idPersona.name}&nbsp;#{asginarDignidadesController.selected.idPersona.apellido}" title="#{idioma.ViewAsginarDignidadesTitle_idPersona}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="AsginarDignidadesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

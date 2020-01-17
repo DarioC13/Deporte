@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportes_jugador_dinidades_subreport1" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7b6f030c-cd98-452c-9ee1-26af2231d67b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona.`id_persona` AS persona_id_persona,
+     persona.`id_rol_deportivo` AS persona_id_rol_deportivo,
+     persona.`name` AS persona_name,
+     persona.`apellido` AS persona_apellido,
+     persona.`cedula` AS persona_cedula,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`celular` AS persona_celular,
+     persona.`correo` AS persona_correo,
+     persona.`genero` AS persona_genero,
+     persona.`direccion` AS persona_direccion,
+     persona.`foto` AS persona_foto,
+     persona.`num_camistea` AS persona_num_camistea,
+     persona.`estado` AS persona_estado,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono,
+     asginar_dignidades.`id_asginar_dignidades` AS asginar_dignidades_id_asginar_dignidades,
+     asginar_dignidades.`id_persona` AS asginar_dignidades_id_persona,
+     asginar_dignidades.`id_dignidades` AS asginar_dignidades_id_dignidades,
+     asginar_dignidades.`obervacion` AS asginar_dignidades_obervacion,
+     asignar_persona_equipo.`id_asignar_persona_equipo` AS asignar_persona_equipo_id_asignar_persona_equipo,
+     asignar_persona_equipo.`id_persona` AS asignar_persona_equipo_id_persona,
+     asignar_persona_equipo.`id_equipo` AS asignar_persona_equipo_id_equipo,
+     asignar_persona_equipo.`observacion` AS asignar_persona_equipo_observacion
+FROM
+     `persona` persona INNER JOIN `asginar_dignidades` asginar_dignidades ON persona.`id_persona` = asginar_dignidades.`id_persona`
+     INNER JOIN `asignar_persona_equipo` asignar_persona_equipo ON persona.`id_persona` = asignar_persona_equipo.`id_persona`
+     INNER JOIN `equipo` equipo ON asignar_persona_equipo.`id_equipo` = equipo.`id_equipo` WHERE equipo.`id_equipo` = $P{id}]]>
+	</queryString>
+	<field name="persona_id_persona" class="java.lang.Integer"/>
+	<field name="persona_id_rol_deportivo" class="java.lang.Integer"/>
+	<field name="persona_name" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="persona_cedula" class="java.lang.String"/>
+	<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="persona_celular" class="java.lang.String"/>
+	<field name="persona_correo" class="java.lang.String"/>
+	<field name="persona_genero" class="java.lang.Integer"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="persona_foto" class="java.lang.String"/>
+	<field name="persona_num_camistea" class="java.lang.Integer"/>
+	<field name="persona_estado" class="java.lang.Integer"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<field name="asginar_dignidades_id_asginar_dignidades" class="java.lang.Integer"/>
+	<field name="asginar_dignidades_id_persona" class="java.lang.Integer"/>
+	<field name="asginar_dignidades_id_dignidades" class="java.lang.Integer"/>
+	<field name="asginar_dignidades_obervacion" class="java.lang.String"/>
+	<field name="asignar_persona_equipo_id_asignar_persona_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_persona" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_observacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="34">
+			<rectangle>
+				<reportElement x="0" y="0" width="595" height="34" forecolor="#009900" backcolor="#009900" uuid="013255b4-ba6e-4279-a829-c5fbcf47337f"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="595" height="34" forecolor="#FFFFFF" uuid="e8e74917-eb41-449d-a91d-28bd2fc94357"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuerpo Tecnico]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28">
+			<textField>
+				<reportElement x="0" y="8" width="90" height="20" uuid="c6cc4f52-ec6e-4ebe-90e8-29899596e576"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="8" width="108" height="20" uuid="afe1e4d6-1a4f-45e2-8155-994c544d346a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

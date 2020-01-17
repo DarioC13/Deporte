@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolDeportivoCreateDlg" widgetVar="RolDeportivoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.CreateRolDeportivoTitle}">
+            <h:form id="RolDeportivoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolDeportivoController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.CreateRolDeportivoLabel_rolDeportivo}" for="rolDeportivo" />
+                        <p:inputText id="rolDeportivo" value="#{rolDeportivoController.selected.rolDeportivo}" title="#{idioma.CreateRolDeportivoTitle_rolDeportivo}" />
+                        <p:outputLabel value="#{idioma.CreateRolDeportivoLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{rolDeportivoController.selected.observacion}" title="#{idioma.CreateRolDeportivoTitle_observacion}" />
+                        <p:outputLabel value="#{idioma.CreateRolDeportivoLabel_fechaHoraRegistro}" for="fechaHoraRegistro" />
+                        <p:calendar id="fechaHoraRegistro" pattern="MM/dd/yyyy HH:mm:ss" locale="es" value="#{rolDeportivoController.selected.fechaHoraRegistro}" title="#{idioma.EditRolDeportivoTitle_fechaHoraRegistro}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-circle-check" actionListener="#{rolDeportivoController.create}" value="#{idioma.Save}" update="display,:RolDeportivoListForm:datalist,:growl" oncomplete="handleSubmit(args,'RolDeportivoCreateDialog');"/>
+                    <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="RolDeportivoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comision_de_disiplina_subreport2-1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="66001e4e-3425-44da-8cfe-a7663971757c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#333333"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#ADFF2F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#333333"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6FFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#333333"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#333333"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#ADFF2F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#E6FFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#ACE673">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#DAE6CF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#8FBC8F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#556B2F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#E8FFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Tablaanotaciones" uuid="81fbb2c6-d6c3-45e4-8902-463cfceff945">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     persona.`id_persona` AS persona_id_persona,
+     persona.`id_rol_deportivo` AS persona_id_rol_deportivo,
+     persona.`name` AS persona_name,
+     persona.`apellido` AS persona_apellido,
+     persona.`cedula` AS persona_cedula,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`celular` AS persona_celular,
+     persona.`correo` AS persona_correo,
+     persona.`genero` AS persona_genero,
+     persona.`direccion` AS persona_direccion,
+     persona.`foto` AS persona_foto,
+     persona.`num_camistea` AS persona_num_camistea,
+     persona.`estado` AS persona_estado,
+     asignar_persona_equipo.`id_asignar_persona_equipo` AS asignar_persona_equipo_id_asignar_persona_equipo,
+     asignar_persona_equipo.`id_persona` AS asignar_persona_equipo_id_persona,
+     asignar_persona_equipo.`id_equipo` AS asignar_persona_equipo_id_equipo,
+     asignar_persona_equipo.`observacion` AS asignar_persona_equipo_observacion,
+     marcador_jugador.`id_marcador` AS marcador_jugador_id_marcador,
+     marcador_jugador.`id_encuentros` AS marcador_jugador_id_encuentros,
+     marcador_jugador.`id_persona` AS marcador_jugador_id_persona,
+     marcador_jugador.`id_sanciones` AS marcador_jugador_id_sanciones,
+     marcador_jugador.`gol` AS marcador_jugador_gol,
+     marcador_jugador.`informe_jugador` AS marcador_jugador_informe_jugador,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono
+FROM
+     `persona` persona INNER JOIN `asignar_persona_equipo` asignar_persona_equipo ON persona.`id_persona` = asignar_persona_equipo.`id_persona`
+     INNER JOIN `marcador_jugador` marcador_jugador ON persona.`id_persona` = marcador_jugador.`id_persona`
+     INNER JOIN `equipo` equipo ON asignar_persona_equipo.`id_equipo` = equipo.`id_equipo`]]>
+		</queryString>
+		<field name="persona_id_persona" class="java.lang.Integer"/>
+		<field name="persona_id_rol_deportivo" class="java.lang.Integer"/>
+		<field name="persona_name" class="java.lang.String"/>
+		<field name="persona_apellido" class="java.lang.String"/>
+		<field name="persona_cedula" class="java.lang.String"/>
+		<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+		<field name="persona_celular" class="java.lang.String"/>
+		<field name="persona_correo" class="java.lang.String"/>
+		<field name="persona_genero" class="java.lang.Integer"/>
+		<field name="persona_direccion" class="java.lang.String"/>
+		<field name="persona_foto" class="java.lang.String"/>
+		<field name="persona_num_camistea" class="java.lang.Integer"/>
+		<field name="persona_estado" class="java.lang.Integer"/>
+		<field name="asignar_persona_equipo_id_asignar_persona_equipo" class="java.lang.Integer"/>
+		<field name="asignar_persona_equipo_id_persona" class="java.lang.Integer"/>
+		<field name="asignar_persona_equipo_id_equipo" class="java.lang.Integer"/>
+		<field name="asignar_persona_equipo_observacion" class="java.lang.String"/>
+		<field name="marcador_jugador_id_marcador" class="java.lang.Integer"/>
+		<field name="marcador_jugador_id_encuentros" class="java.lang.Integer"/>
+		<field name="marcador_jugador_id_persona" class="java.lang.Integer"/>
+		<field name="marcador_jugador_id_sanciones" class="java.lang.Integer"/>
+		<field name="marcador_jugador_gol" class="java.lang.Integer"/>
+		<field name="marcador_jugador_informe_jugador" class="java.lang.String"/>
+		<field name="equipo_id_equipo" class="java.lang.Integer"/>
+		<field name="equipo_nom_equipo" class="java.lang.String"/>
+		<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+		<field name="equipo_logo" class="java.lang.String"/>
+		<field name="equipo_direccion" class="java.lang.String"/>
+		<field name="equipo_email" class="java.lang.String"/>
+		<field name="equipo_telefono" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="sentencia" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona.`id_persona` AS persona_id_persona,
+     persona.`id_rol_deportivo` AS persona_id_rol_deportivo,
+     persona.`name` AS persona_name,
+     persona.`apellido` AS persona_apellido,
+     persona.`cedula` AS persona_cedula,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`celular` AS persona_celular,
+     persona.`correo` AS persona_correo,
+     persona.`genero` AS persona_genero,
+     persona.`direccion` AS persona_direccion,
+     persona.`foto` AS persona_foto,
+     persona.`num_camistea` AS persona_num_camistea,
+     persona.`estado` AS persona_estado,
+     marcador_jugador.`id_marcador` AS marcador_jugador_id_marcador,
+     marcador_jugador.`id_encuentros` AS marcador_jugador_id_encuentros,
+     marcador_jugador.`id_persona` AS marcador_jugador_id_persona,
+     marcador_jugador.`id_sanciones` AS marcador_jugador_id_sanciones,
+     marcador_jugador.`gol` AS marcador_jugador_gol,
+     marcador_jugador.`informe_jugador` AS marcador_jugador_informe_jugador,
+     asignar_persona_equipo.`id_asignar_persona_equipo` AS asignar_persona_equipo_id_asignar_persona_equipo,
+     asignar_persona_equipo.`id_persona` AS asignar_persona_equipo_id_persona,
+     asignar_persona_equipo.`id_equipo` AS asignar_persona_equipo_id_equipo,
+     asignar_persona_equipo.`observacion` AS asignar_persona_equipo_observacion,
+     equipo.`id_equipo` AS equipo_id_equipo,
+     equipo.`nom_equipo` AS equipo_nom_equipo,
+     equipo.`fecha_inscripcion` AS equipo_fecha_inscripcion,
+     equipo.`logo` AS equipo_logo,
+     equipo.`direccion` AS equipo_direccion,
+     equipo.`email` AS equipo_email,
+     equipo.`telefono` AS equipo_telefono
+FROM
+     `persona` persona INNER JOIN `marcador_jugador` marcador_jugador ON persona.`id_persona` = marcador_jugador.`id_persona`
+     INNER JOIN `asignar_persona_equipo` asignar_persona_equipo ON persona.`id_persona` = asignar_persona_equipo.`id_persona`
+     INNER JOIN `equipo` equipo ON asignar_persona_equipo.`id_equipo` = equipo.`id_equipo`
+WHERE
+     marcador_jugador.`id_encuentros` = $P{sentencia}]]>
+	</queryString>
+	<field name="persona_id_persona" class="java.lang.Integer"/>
+	<field name="persona_id_rol_deportivo" class="java.lang.Integer"/>
+	<field name="persona_name" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="persona_cedula" class="java.lang.String"/>
+	<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="persona_celular" class="java.lang.String"/>
+	<field name="persona_correo" class="java.lang.String"/>
+	<field name="persona_genero" class="java.lang.Integer"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="persona_foto" class="java.lang.String"/>
+	<field name="persona_num_camistea" class="java.lang.Integer"/>
+	<field name="persona_estado" class="java.lang.Integer"/>
+	<field name="marcador_jugador_id_marcador" class="java.lang.Integer"/>
+	<field name="marcador_jugador_id_encuentros" class="java.lang.Integer"/>
+	<field name="marcador_jugador_id_persona" class="java.lang.Integer"/>
+	<field name="marcador_jugador_id_sanciones" class="java.lang.Integer"/>
+	<field name="marcador_jugador_gol" class="java.lang.Integer"/>
+	<field name="marcador_jugador_informe_jugador" class="java.lang.String"/>
+	<field name="asignar_persona_equipo_id_asignar_persona_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_persona" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="asignar_persona_equipo_observacion" class="java.lang.String"/>
+	<field name="equipo_id_equipo" class="java.lang.Integer"/>
+	<field name="equipo_nom_equipo" class="java.lang.String"/>
+	<field name="equipo_fecha_inscripcion" class="java.sql.Date"/>
+	<field name="equipo_logo" class="java.lang.String"/>
+	<field name="equipo_direccion" class="java.lang.String"/>
+	<field name="equipo_email" class="java.lang.String"/>
+	<field name="equipo_telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="34" backcolor="#006699" uuid="96a2a824-5bcf-4290-96bb-1978343c652e"/>
+				<staticText>
+					<reportElement x="10" y="0" width="280" height="33" forecolor="#FFFFFF" uuid="f92de4e2-6a52-489e-9670-7f5ad7067bd8"/>
+					<textElement>
+						<font fontName="SansSerif" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ANOTACIONES]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="daff0fb1-1f7c-486f-ac24-09e86e24fef1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2a496f63-1e5c-4f43-bc3b-385293e75fd3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="2af86d12-9182-4b49-91bf-1411fb8115d3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="d0b23f43-73df-49f8-be4e-4f96ad5e916d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Camiseta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="afdbd9c3-80a0-4080-b4b9-b87a64bbc196"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gol]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="bcdfae42-ddde-478a-8806-f521f178758d"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="31b0d38f-1038-48ba-946d-2e88322a61c4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="100" height="20" uuid="2d8814cb-524a-4895-83fb-ba931e633a6f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipo_nom_equipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="bbf41b05-1d43-466f-b303-e78bd69f784f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_num_camistea}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="bb769c76-313c-45ac-9034-fed7251faae8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcador_jugador_gol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="1" width="100" height="20" uuid="ee0ca5f4-9e1a-4228-987b-cd3fbec02ef6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

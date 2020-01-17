@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EsenariosEditDlg" widgetVar="EsenariosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditEsenariosTitle}">
+            <h:form id="EsenariosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{esenariosController.selected != null}">
+                       
+                        <p:outputLabel value="#{idioma.EditEsenariosLabel_esesario}" for="esesario" />
+                        <p:inputText id="esesario" value="#{esenariosController.selected.esesario}" title="#{idioma.EditEsenariosTitle_esesario}" />
+                        <p:outputLabel value="#{idioma.EditEsenariosLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{esenariosController.selected.observacion}" title="#{idioma.EditEsenariosTitle_observacion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{esenariosController.update}" value="#{idioma.Save}" update="display,:EsenariosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EsenariosEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="EsenariosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

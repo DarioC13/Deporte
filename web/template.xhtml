@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">GAD LIMON</ui:insert></title>
+        <link rel="icon"   href="resources/images/icono.ico" type="image/png"/>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputScript library="js" name="spanishCalendar.js"/>
+    </h:head>
+
+    <h:body >
+        <p:growl id="growl" life="3000" />
+                <p:graphicImage alt="banner" style="width: 100%;" library="images" name="banner.jpg"/>
+               <h:form >
+                    <p:menubar>
+                        <p:menuitem class="btnInicio" value="#{idioma.Home}" outcome="/administrador/admin" icon="ui-icon-home"/>
+                        <p:submenu class="sub-menu" label="#{idioma.Equipos}">  
+                            <p:menuitem value="Equipo" outcome="/administrador/equipo/List.xhtml"/>
+                            <p:menuitem value="MarcadorEquipo" outcome="/administrador/marcadorEquipo/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu class="sub-menu" label="#{idioma.Campeonatos}">
+                            <p:menuitem value="Asignar Campeonatos" outcome="/administrador/asginarCampeonatoCategoria/List.xhtml"/>
+                            <p:menuitem value="Campeonatos" outcome="/administrador/campeonato/List.xhtml"/>
+                            <p:menuitem value="Categorias" outcome="/administrador/categoria/List.xhtml"/>
+                            <p:menuitem value="AsginarDignidades" outcome="/administrador/asginarDignidades/List.xhtml"/>
+                            <p:menuitem value="Dignidades" outcome="/administrador/dignidades/List.xhtml"/>
+                            <p:menuitem value="Inscripcion" outcome="/administrador/inscripcion/List.xhtml" />   
+                        </p:submenu>
+                        <p:submenu class="sub-menu" label="#{idioma.Encuentros}">
+                            <p:menuitem value="Encuentros" outcome="/administrador/encuentros/List.xhtml"/>
+                            <p:menuitem value="ArbitrosEncuentros" outcome="/administrador/arbitrosEncuentros/List.xhtml"/>
+                            <p:menuitem value="Esenarios" outcome="/administrador/esenarios/List.xhtml"/>
+                            <p:menuitem value="EstadoEncuentro" outcome="/administrador/estadoEncuentro/List.xhtml"/>
+                            <p:menuitem value="ControlDePago" outcome="/administrador/controlDePago/List.xhtml"/>
+                            <p:menuitem value="ControlSanciones" outcome="/administrador/controlSanciones/List.xhtml"/>
+
+                            <p:menuitem value="MarcadorJugador" outcome="/administrador/marcadorJugador/List.xhtml" />
+                            <p:menuitem value="Sancion" outcome="/administrador/sancion/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu class="sub-menu" label="#{idioma.Jugador}">
+                            <p:menuitem value="RolDeportivo" outcome="/administrador/rolDeportivo/List.xhtml" />
+                            <p:menuitem value="Persona" outcome="/administrador/persona/List.xhtml" />
+                            <p:menuitem value="Asignar Jugadores" outcome="/administrador/asignarPersonaEquipo/List.xhtml"/>
+                        </p:submenu>
+                        <p:submenu class="sub-menu" label="#{idioma.Arbitro}">
+                            <p:menuitem value="Albitros" outcome="/administrador/albitros/List.xhtml"/>
+                            <p:menuitem value="TipoAlbitro" outcome="/administrador/tipoAlbitro/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu class="sub-menu" label="#{idioma.Maintenance}">                         
+                            <p:menuitem value="Rol" outcome="/administrador/rol/List.xhtml" />
+                            <p:menuitem value="Usuario" outcome="/administrador/usuario/List.xhtml" />
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:commandButton icon="ui-icon-power" value="Cerrar Sesión" action="#{accesoSistema.logout()}" >
+                            </p:commandButton>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+
+
+                <ui:insert name="body"/>
+
+    </h:body>
+
+</html>

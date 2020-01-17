@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlbitrosEditDlg" widgetVar="AlbitrosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditAlbitrosTitle}">
+            <h:form id="AlbitrosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{albitrosController.selected != null}">
+                        
+                        <p:outputLabel value="#{idioma.EditAlbitrosLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{albitrosController.selected.observacion}" title="#{idioma.EditAlbitrosTitle_observacion}" />
+                        <p:outputLabel value="#{idioma.EditAlbitrosLabel_idPersona}" for="idPersona" />
+                        <p:selectOneMenu id="idPersona" value="#{albitrosController.selected.idPersona}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idPersonaItem"
+                                           itemValue="#{idPersonaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditAlbitrosLabel_idTipoAlbitro}" for="idTipoAlbitro" />
+                        <p:selectOneMenu id="idTipoAlbitro" value="#{albitrosController.selected.idTipoAlbitro}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoAlbitroController.itemsAvailableSelectOne}"
+                                           var="idTipoAlbitroItem"
+                                           itemValue="#{idTipoAlbitroItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{albitrosController.update}" value="#{idioma.Save}" update="display,:AlbitrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AlbitrosEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="AlbitrosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

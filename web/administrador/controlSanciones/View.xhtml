@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ControlSancionesViewDlg" widgetVar="ControlSancionesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.ViewControlSancionesTitle}">
+            <h:form id="ControlSancionesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controlSancionesController.selected != null}">
+
+                        <h:outputText value="#{idioma.ViewControlSancionesLabel_observaciones}"/>
+                        <h:outputText value="#{controlSancionesController.selected.observaciones}" title="#{idioma.ViewControlSancionesTitle_observaciones}"/>
+                        <h:outputText value="#{idioma.ViewControlSancionesLabel_idEncuentro}"/>
+                        <h:outputText value="#{controlSancionesController.selected.idEncuentro.idEquipoA}&nbsp;#{controlSancionesController.selected.idEncuentro.idEquipoB}" title="#{idioma.ViewControlSancionesTitle_idEncuentro}"/>
+                        <h:outputText value="#{idioma.ViewControlSancionesLabel_idControlPago}"/>
+                        <h:outputText value="#{controlSancionesController.selected.idControlPago.controlPago}" title="#{idioma.ViewControlSancionesTitle_idControlPago}"/>
+                        <h:outputText value="#{idioma.ViewControlSancionesLabel_idPersona}"/>
+                        <h:outputText value="#{controlSancionesController.selected.idPersona.name}&nbsp;#{controlSancionesController.selected.idPersona.apellido}" title="#{idioma.ViewControlSancionesTitle_idPersona}"/>
+                        <h:outputText value="#{idioma.ViewControlSancionesLabel_idSancion}"/>
+                        <h:outputText value="#{controlSancionesController.selected.idSancion.sancion}" title="#{idioma.ViewControlSancionesTitle_idSancion}"/>
+                        <h:outputText value="#{idioma.ViewControlSancionesCosto_idSancion}"/>
+                        <h:outputText value="#{controlSancionesController.selected.idSancion.costo}" title="#{idioma.ViewControlSancionesTitle_idSancion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{idioma.Close}" onclick="ControlSancionesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

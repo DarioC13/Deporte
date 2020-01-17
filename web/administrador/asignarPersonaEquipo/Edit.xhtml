@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsignarPersonaEquipoEditDlg" widgetVar="AsignarPersonaEquipoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{idioma.EditAsignarPersonaEquipoTitle}">
+            <h:form id="AsignarPersonaEquipoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asignarPersonaEquipoController.selected != null}">
+
+                        <p:outputLabel value="#{idioma.EditAsignarPersonaEquipoLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{asignarPersonaEquipoController.selected.observacion}" title="#{idioma.EditAsignarPersonaEquipoTitle_observacion}" />
+                        <p:outputLabel value="#{idioma.EditAsignarPersonaEquipoLabel_idEquipo}" for="idEquipo" />
+                        <p:selectOneMenu id="idEquipo" value="#{asignarPersonaEquipoController.selected.idEquipo}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"
+                                           var="idEquipoItem"
+                                           itemValue="#{idEquipoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{idioma.EditAsignarPersonaEquipoLabel_idPersona}" for="idPersona" />
+                        <p:selectOneMenu id="idPersona" value="#{asignarPersonaEquipoController.selected.idPersona}" >
+                            <f:selectItem itemLabel="#{idioma.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idPersonaItem"
+                                           itemValue="#{idPersonaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asignarPersonaEquipoController.update}" value="#{idioma.Save}" update="display,:AsignarPersonaEquipoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AsignarPersonaEquipoEditDialog');"/>
+                    <p:commandButton value="#{idioma.Cancel}" onclick="AsignarPersonaEquipoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
