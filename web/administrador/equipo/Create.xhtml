@@ -25,10 +25,10 @@
                         <p:outputLabel value="#{idioma.CreateEquipoLabel_telefono}" for="telefono" />
                         <p:inputText id="telefono" value="#{equipoController.selected.telefono}" title="#{idioma.CreateEquipoTitle_telefono}" />
                         
-                        <p:outputLabel value="Logo" />
+                        <label>#{idioma.CreateEquipoLabel_logo}</label>
                         <p:fileUpload fileUploadListener="#{equipoController.handleFileUpload}" 
                                     mode="advanced" 
-                                    dragDropSupport="false"
+                                    dragDropSupport="true"
                                     update="messages" 
                                     sizeLimit="100000" 
                                     fileLimit="3" 
@@ -37,7 +37,11 @@
                                     uploadLabel="Subir Imagen"
                                     label="Elegir"
                                     style="width: 650px;"
-                                    />
+                                    value="#{equipoController.uploadedFile}"
+                                    /><br/>
+                        <h:commandButton id="btnSubmit" actionListener="#{equipoController.subir}" value="Save">
+                            <f:ajax execute="@all" render="@form"/>
+                        </h:commandButton> 
                     </p:panelGrid>
                     <p:commandButton icon="ui-icon-circle-check" actionListener="#{equipoController.create}" value="#{idioma.Save}" update="display,:EquipoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EquipoCreateDialog');"/>
                     <p:commandButton icon="ui-icon-close" value="#{idioma.Cancel}" onclick="EquipoCreateDialog.hide()"/>

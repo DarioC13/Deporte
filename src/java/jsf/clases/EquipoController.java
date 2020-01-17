@@ -36,6 +36,9 @@ public class EquipoController implements Serializable {
     private List<Equipo> items = null;
     private Equipo selected;
     private UploadedFile fileClubDeportivo;
+    
+    private static UploadedFile uploadedFile;
+
 
     public UploadedFile getFileClubDeportivo() {
         return fileClubDeportivo;
@@ -73,6 +76,9 @@ public class EquipoController implements Serializable {
     }
 
     public void create() {
+        
+//        subir();
+        
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/idioma").getString("EquipoCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -176,19 +182,25 @@ public class EquipoController implements Serializable {
                 return null;
             }
         }
-
+    
+    }
+     public UploadedFile getUploadedFile() {
+        return uploadedFile;
     }
     
     public void handleFileUpload(FileUploadEvent event) {
-        UploadedFile file = event.getFile();
+        uploadedFile = event.getFile();
+    }
+    
+    public void subir(){
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         String realPath = UtilPath.getPathDefinida(ec.getRealPath("/"));
-        String pathDefinition = realPath + File.separator + "web" +File.separator+ "resources"+ File.separator + "foto" + File.separator + file.getFileName();
+        String pathDefinition = realPath + File.separator + "web" +File.separator+ "resources"+ File.separator + "foto" + File.separator + uploadedFile.getFileName();
         try {
-            FileInputStream in = (FileInputStream) file.getInputstream();
+            FileInputStream in = (FileInputStream) uploadedFile.getInputstream();
             FileOutputStream out = new FileOutputStream(pathDefinition);
 
-            byte[] buffer = new byte[(int) file.getSize()];
+            byte[] buffer = new byte[(int) uploadedFile.getSize()];
             int contador = 0;
 
             while ((contador = in.read(buffer)) != -1) {
@@ -201,8 +213,7 @@ public class EquipoController implements Serializable {
             ioe.printStackTrace();
 
         }
-        selected.setLogo(file.getFileName());
+        selected.setLogo(uploadedFile.getFileName());
     }
-    
 
 }

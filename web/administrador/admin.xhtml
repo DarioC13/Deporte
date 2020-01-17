@@ -94,32 +94,32 @@
                                     <p:inputText id="globalFilter" class="campoBuscar"
                                              placeholder="Buscar" 
                                              onkeyup="PF('encuentros').filter()" 
-                                             style="margin: 10px;text-align: center;"
+                                             style="font-size: 16px;margin: 10px;text-align: center;border-radius: 20px;padding: 7px 0px;width: 500px;"
                                              /> 
                                 </f:facet>
 
-                                <p:column>
+                                <p:column filterBy="#{item.idEquipoA.nomEquipo}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Equipo A"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idEquipoA.nomEquipo}"/>
                                 </p:column>
 
-                                <p:column>
+                                <p:column filterBy="#{item.idEquipoB.nomEquipo}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Equipo B"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idEquipoB.nomEquipo}"/>
                                 </p:column>
 
-                                <p:column>
+                                <p:column filterBy="#{item.idEsenario.esesario}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Esenario"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idEsenario.esesario}"/>
                                 </p:column>
 
-                                <p:column>
+                                <p:column filterBy="#{item.fechaEncuentro}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Fecha de Encuantro"/>
                                     </f:facet>
@@ -128,14 +128,14 @@
                                     </h:outputText>
                                 </p:column>
 
-                                <p:column>
+                                <p:column filterBy="#{item.hora}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Hora"/>
                                     </f:facet>
-                                    <h:outputText class="listaDatos" value="#{item.hora}"/>
+                                    <h:outputText value="#{item.hora}"/>
                                 </p:column>
 
-                                <p:column>
+                                <p:column filterBy="#{item.asignarCampeonatoCategoria.idCategoria.categoria}" filterMatchMode="contains">
                                     <f:facet name="header">
                                         <h:outputText value="Categoria"/>
                                     </f:facet>
